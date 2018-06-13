@@ -1,0 +1,11 @@
+{
+  "name": "g-map-direction",
+  "private": true,
+  "dependencies": {
+    "snazzy-info-window": "^1.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
