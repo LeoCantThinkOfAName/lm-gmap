@@ -365,61 +365,172 @@ let getMarkers = () => {
 
 let mapStyle = [
     {
-        'featureType': 'all',
-        'elementType': 'all',
+        'featureType': 'administrative',
+        'elementType': 'geometry.stroke',
         'stylers': [
             {
                 'visibility': 'on'
-            }
-        ]
-    },
-    {
-        'featureType': 'all',
-        'elementType': 'labels',
-        'stylers': [
-            {
-                'visibility': 'off'
             },
             {
-                'saturation': '-100'
+                'color': '#0096aa'
+            },
+            {
+                'weight': '0.30'
+            },
+            {
+                'saturation': '-75'
+            },
+            {
+                'lightness': '5'
+            },
+            {
+                'gamma': '1'
             }
         ]
     },
     {
-        'featureType': 'all',
+        'featureType': 'administrative',
         'elementType': 'labels.text.fill',
         'stylers': [
             {
-                'saturation': 36
+                'color': '#0096aa'
             },
             {
-                'color': '#000000'
+                'saturation': '-75'
             },
             {
-                'lightness': 40
-            },
-            {
-                'visibility': 'off'
+                'lightness': '5'
             }
         ]
     },
     {
-        'featureType': 'all',
+        'featureType': 'administrative',
         'elementType': 'labels.text.stroke',
         'stylers': [
             {
-                'visibility': 'off'
+                'color': '#efd75b'
             },
             {
-                'color': '#000000'
+                'visibility': 'on'
             },
             {
-                'lightness': 16
+                'weight': '6'
+            },
+            {
+                'saturation': '-28'
+            },
+            {
+                'lightness': '0'
             }
         ]
     },
     {
-        'featureType': 'all',
+        'featureType': 'administrative',
+        'elementType': 'labels.icon',
+        'stylers': [
+            {
+                'visibility': 'on'
+            },
+            {
+                'color': '#e6007e'
+            },
+            {
+                'weight': '1'
+            }
+        ]
+    },
+    {
+        'featureType': 'landscape',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'color': '#efd75b'
+            },
+            {
+                'saturation': '-28'
+            },
+            {
+                'lightness': '0'
+            }
+        ]
+    },
+    {
+        'featureType': 'poi',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'visibility': 'off'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'all',
+        'stylers': [
+            {
+                'color': '#0096aa'
+            },
+            {
+                'visibility': 'simplified'
+            },
+            {
+                'saturation': '-75'
+            },
+            {
+                'lightness': '5'
+            },
+            {
+                'gamma': '1'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'labels.text',
+        'stylers': [
+            {
+                'visibility': 'on'
+            },
+            {
+                'color': '#efd75b'
+            },
+            {
+                'weight': 8
+            },
+            {
+                'saturation': '-28'
+            },
+            {
+                'lightness': '0'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
+        'elementType': 'labels.text.fill',
+        'stylers': [
+            {
+                'visibility': 'on'
+            },
+            {
+                'color': '#0096aa'
+            },
+            {
+                'weight': 8
+            },
+            {
+                'lightness': '5'
+            },
+            {
+                'gamma': '1'
+            },
+            {
+                'saturation': '-75'
+            }
+        ]
+    },
+    {
+        'featureType': 'road',
         'elementType': 'labels.icon',
         'stylers': [
             {
@@ -428,239 +539,23 @@ let mapStyle = [
         ]
     },
     {
-        'featureType': 'administrative',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 20
-            }
-        ]
-    },
-    {
-        'featureType': 'administrative',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 17
-            },
-            {
-                'weight': 1.2
-            }
-        ]
-    },
-    {
-        'featureType': 'landscape',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 20
-            }
-        ]
-    },
-    {
-        'featureType': 'landscape',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#4d6059'
-            }
-        ]
-    },
-    {
-        'featureType': 'landscape',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#4d6059'
-            }
-        ]
-    },
-    {
-        'featureType': 'landscape.natural',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#4d6059'
-            }
-        ]
-    },
-    {
-        'featureType': 'poi',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'lightness': 21
-            }
-        ]
-    },
-    {
-        'featureType': 'poi',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#4d6059'
-            }
-        ]
-    },
-    {
-        'featureType': 'poi',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#4d6059'
-            }
-        ]
-    },
-    {
-        'featureType': 'road',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'visibility': 'on'
-            },
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
-        'featureType': 'road',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
-        'featureType': 'road.highway',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            },
-            {
-                'lightness': 17
-            }
-        ]
-    },
-    {
-        'featureType': 'road.highway',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            },
-            {
-                'lightness': 29
-            },
-            {
-                'weight': 0.2
-            }
-        ]
-    },
-    {
-        'featureType': 'road.arterial',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 18
-            }
-        ]
-    },
-    {
-        'featureType': 'road.arterial',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
-        'featureType': 'road.arterial',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
-        'featureType': 'road.local',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 16
-            }
-        ]
-    },
-    {
-        'featureType': 'road.local',
-        'elementType': 'geometry.fill',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
-        'featureType': 'road.local',
-        'elementType': 'geometry.stroke',
-        'stylers': [
-            {
-                'color': '#7f8d89'
-            }
-        ]
-    },
-    {
         'featureType': 'transit',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'color': '#000000'
-            },
-            {
-                'lightness': 19
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
         'elementType': 'all',
         'stylers': [
             {
-                'color': '#2b3638'
+                'visibility': 'simplified'
             },
             {
-                'visibility': 'on'
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
-        'elementType': 'geometry',
-        'stylers': [
-            {
-                'color': '#2b3638'
+                'color': '#0096aa'
             },
             {
-                'lightness': 17
+                'saturation': '-75'
+            },
+            {
+                'lightness': '5'
+            },
+            {
+                'gamma': '1'
             }
         ]
     },
@@ -669,25 +564,19 @@ let mapStyle = [
         'elementType': 'geometry.fill',
         'stylers': [
             {
-                'color': '#24282b'
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
-        'elementType': 'geometry.stroke',
-        'stylers': [
+                'visibility': 'on'
+            },
             {
-                'color': '#24282b'
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
-        'elementType': 'labels',
-        'stylers': [
+                'color': '#0096aa'
+            },
             {
-                'visibility': 'off'
+                'saturation': '-75'
+            },
+            {
+                'lightness': '5'
+            },
+            {
+                'gamma': '1'
             }
         ]
     },
@@ -696,25 +585,16 @@ let mapStyle = [
         'elementType': 'labels.text',
         'stylers': [
             {
-                'visibility': 'off'
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
-        'elementType': 'labels.text.fill',
-        'stylers': [
+                'visibility': 'simplified'
+            },
             {
-                'visibility': 'off'
-            }
-        ]
-    },
-    {
-        'featureType': 'water',
-        'elementType': 'labels.text.stroke',
-        'stylers': [
+                'color': '#efd75b'
+            },
             {
-                'visibility': 'off'
+                'saturation': '-28'
+            },
+            {
+                'lightness': '0'
             }
         ]
     },
@@ -742,21 +622,20 @@ new gMapDirection({
     // Pass markers data
     markers: getMarkers(),
     // Specify marker animation mode
-    markerAnim: google.maps.Animation.Go,
+    markerAnim: google.maps.Animation.DROP,
     // Set marker animation timeout
     markerIn: .1,
     // Set route color
     lineColor: 'rgba(255, 255, 255, .5)',
     // set route width
     lineWidth: 5,
-    // Disable google maps a b marker
+    // Disable google maps' marker
     disableTwoEnd: true,
     // Snazzy Info Window
     infoWindow: {
         closeWhenOthersOpen: true,
         callbacks: {
             open() {
-                alert(this._marker.title)
                 gDirectionsService.route({
                     origin: {lat: 25.0478895, lng: 121.5163595},
                     destination: this._marker.position,

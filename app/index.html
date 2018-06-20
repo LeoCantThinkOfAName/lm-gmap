@@ -24,8 +24,120 @@
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
-    <div id="app" style="height: 100vh; width: 100vw"></div>
+    <div class="container">
+      <div id="app" class="map-wrapper"></div>
+
+      <div class="hint">
+        <input type="checkbox" id="hint-trigger" checked="true">
+        <label for="hint-trigger">▴</label>
+
+        <div class="hint-content">
+          <div class="hint-content-inner">
+            <div>
+
+              <h1>Get A FKing Google Map Direction API In Ease.</h1>
+              <p>
+                我不懂為什麼 PM 很愛推這項功能？而且客戶居然都肯買單！？把官方網站搞得跟觀光網站一樣幹嘛...<br>
+                不過人生既然注定得被____，不如想辦法讓自己未來的人生能輕鬆一點吧...
+              </p>
+              <p>
+                這不是一個有花俏功能的套件，單純是把目前公司在網站製作時常用的 Google Map 基本配置簡單封裝；<br>
+                所以是個目的性很強，基本上一般人用不上的無聊東西。
+              </p>
+              <hr>
+              <p>
+                這個浪費生命的東西包含：
+                <a 
+                  href="https://developers.google.com/maps/documentation/javascript/?hl=zh-tw" 
+                  target="_blank"
+                  rel="noopener">
+                  Google Map Javascript API
+                </a>
+                (廢話)，以及
+                <a 
+                  href="https://github.com/atmist/snazzy-info-window"
+                  target="_blank"
+                  rel="noopener">Snazzy Info Window
+                </a>
+                (為了更方便使用 CSS 方式變更對話泡泡的樣式)。
+                詳細使用方法自行參照連結。<br>
+                <span class="comment">*因為 Snazzy info window 的關係， Google Map 的引入似乎不能使用官方的推薦的 async defer方式(SHIT!)，不過為了讓自己人生輕鬆一點...載入效能什麼的，根本沒人會發現...</span>
+              </p>
+              <hr>
+              <p>
+                使用方式相當簡單(胡扯)，只要先宣告一個新的 instance 就好了喔！
+                <pre class="blocked">new gMapDirection();</pre><span class="clear"></span>
+                當然是假的...
+                還要在<pre>gMapDirection</pre>裡傳入一個物件...<br>
+                物件裡的必要值有...<br>
+                <pre>root:</pre>是用來生成地圖的根元素，可以是<pre>'#map'</pre>或是<pre>'.fuck-my-life'</pre>之類的。<br>
+                <pre>center:</pre>是用來決定地圖初始化後的中心位置，它會是一個物件例如<pre>{ lat: 120.641716,lng: 24.165037 }</pre>。<br>
+                <pre>zoom:</pre>指定地圖初始化後的 zoom level ，必須為數字。<br>
+                <pre>markers:</pre>既然是要做路線導引的，當然一定要有地點囉。 markers 為 json 格式，要直接寫在裡面不是不行喇，不過用個 function 來插入 markers 會比較容易看吧？<br>
+                另外有一些自選的值...<br>
+                <pre>styles:</pre>可以引入自訂的 Google Map 樣式，詳細自己去 Google。<br>
+                <pre>markerAnim:</pre> Google Map 的 marker 動畫效果<pre>google.maps.Animation.DROP</pre>、<pre>google.maps.Animation.BOUNCE</pre>...<br>
+                <pre>markerIn:</pre>每個 marker 進入的間隔時間，數字。<br>
+                <pre>lineColor:</pre>路線的顏色， hex、rgba...<br>
+                <pre>lineWidth:</pre>就路線的寬度啊！不夠明顯嗎？<br>
+                <pre>disableTwoEnd:</pre>就是 Google Map 的<pre>suppressMarkers</pre>功能。為什麼要自己額外編一個參數呢？要你管？<br>
+                <pre>infoWindow:</pre>基本上就是 Snazzy Info Window 囉。
+              </p>
+              <hr>
+              <p>
+                一些小規定：<br>
+                因為這段程式只適用於非常特定狀況(也就是當被PM逼迫做同樣一個無聊的功能時)，所以會有一些無聊的規定，讓這段程式不會被其他的應用搞混。<br>
+                所有公用的變數會有一個小小的<pre class="blocked">g</pre><span class="clear"></span>例如 Google Map 的 instance 叫做<pre>gMap</pre>，用來存放所有Google Map markers的陣列叫做<pre>gMarkers</pre>，Google Map 的Direction API instance也都有小🐤<pre>gDirectionsDisplay</pre>、<pre>gDirectionsService</pre>...
+              </p>
+              <hr>
+              <p>
+                Info Window基本設置參考：<br>
+                <pre class="blocked">
+infoWindow: {
+    closeWhenOthersOpen: true,
+    callbacks: {
+        open() {
+            <span class="comment">//在這裡呼叫Direction API</span>
+            gDirectionsService.route({
+                origin: {lat: 25.0478895, lng: 121.5163595}, <span class="comment">//這邊是出發點</span>
+                destination: this._marker.position, <span class="comment">//可以用this._marker取得選取的marker</span>
+                travelMode: google.maps.TravelMode['DRIVING'] <span class="comment">//從這邊可以更改交通方式，可利用變數方便更換</span>
+            }, (response, status) => {
+                <span class="comment">//Do whatever you want</span>
+                if(status == 'OK') {
+                    gDirectionsDisplay.setDirections(response)
+                } else {
+                    console.log(status)
+                }
+            });
+        }
+    }
+}
+</pre><span class="clear"></span>
+              </p>
+              <hr>
+              <p>
+                Marker JSON Data format<br>
+                <pre class="blocked">
+{
+    title: 'Taipei Main Station',
+    position: {lat: 25.0478895, lng: 121.5163595},
+    icon: '/images/smiley.png',
+    content: 'Taipei Main Station'
+}
+</pre><span class="clear"></span>
+                <pre>position</pre>是必要資料，如果有<pre>icon</pre>的話會套用該圖示；<pre>title</pre>就是 title 囉；<pre>content</pre>是主要的內容，可以在字串裡寫一段簡單的 html template ，在 Info Window 裡就會美美(個屁)的出現囉。
+              </p>
+              <hr>
+              <p>
+                基本上這就是目前工作上會用到的東西，很沒用、很無聊。有需要更多功能自行參照 Google Map & Snazzy Info Window 的網站。
+              </p>
+              <p>LCTOAN. 2018 @Lemon IT.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
